@@ -1,19 +1,19 @@
 # Evidence Template Project
 
-Thank you for checking out Evidence. This is the project template that you should use to get started. 
+## Usage
 
-## Getting Started
+### Development
 
-Check out the [documentation](https://docs.evidence.dev) for a complete walk through.
-
-```
-npx degit evidence-dev/template my-project
-cd my-project 
-npm install 
-npm run dev 
+```bash
+npm run dev
 ```
 
-Don't clone this repo, just download the code using the steps above. 
+### Deploy
+
+```bash
+npm run build
+(cd build && npx vercel)
+```
 
 ## Learning More
 
