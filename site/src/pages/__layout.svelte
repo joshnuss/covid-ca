@@ -21,7 +21,6 @@
 	<Nav
 		sections={[
 			{ href: '/', label: 'Home' },
-			{ href: '/firstquery', label: 'Querying Data' }
 		]}
 	/>
 </div>
