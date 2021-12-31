@@ -16,19 +16,22 @@ CREATE INDEX timeseries$date ON timeseries (date);
 
 CREATE TABLE provinces (
   code VARCHAR,
-  name VARCHAR
+  name VARCHAR,
+  population INT
 );
 
-INSERT INTO provinces (name, code) VALUES ('Ontario', 'ON');
-INSERT INTO provinces (name, code) VALUES ('Quebec', 'QC');
-INSERT INTO provinces (name, code) VALUES ('Alberta', 'AB');
-INSERT INTO provinces (name, code) VALUES ('Saskatchewan', 'SK');
-INSERT INTO provinces (name, code) VALUES ('Manitoba', 'MB');
-INSERT INTO provinces (name, code) VALUES ('Nova Scotia', 'NS');
-INSERT INTO provinces (name, code) VALUES ('New Brunswick', 'NB');
-INSERT INTO provinces (name, code) VALUES ('Yukon', 'YK');
-INSERT INTO provinces (name, code) VALUES ('Nunavut', 'NU');
-INSERT INTO provinces (name, code) VALUES ('NWT', 'NW');
-INSERT INTO provinces (name, code) VALUES ('PEI', 'PEI');
-INSERT INTO provinces (name, code) VALUES ('Newfoundland', 'NL');
-INSERT INTO provinces (name, code) VALUES ('British Columbia', 'BC');
+-- population data from https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901
+
+INSERT INTO provinces (name, code, population) VALUES ('Ontario', 'ON', 14915270);
+INSERT INTO provinces (name, code, population) VALUES ('Quebec', 'QC', 8631147);
+INSERT INTO provinces (name, code, population) VALUES ('Alberta', 'AB', 4464170);
+INSERT INTO provinces (name, code, population) VALUES ('Saskatchewan', 'SK', 1180867);
+INSERT INTO provinces (name, code, population) VALUES ('Manitoba', 'MB', 1386333);
+INSERT INTO provinces (name, code, population) VALUES ('Nova Scotia', 'NS', 998832);
+INSERT INTO provinces (name, code, population) VALUES ('New Brunswick', 'NB', 794300);
+INSERT INTO provinces (name, code, population) VALUES ('Yukon', 'YK', 43095);
+INSERT INTO provinces (name, code, population) VALUES ('Nunavut', 'NU', 39589);
+INSERT INTO provinces (name, code, population) VALUES ('NWT', 'NW', 45515);
+INSERT INTO provinces (name, code, population) VALUES ('PEI', 'PEI', 165936);
+INSERT INTO provinces (name, code, population) VALUES ('Newfoundland', 'NL', 521758);
+INSERT INTO provinces (name, code, population) VALUES ('British Columbia', 'BC', 5249635);

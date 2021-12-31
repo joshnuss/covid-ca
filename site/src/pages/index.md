@@ -51,7 +51,7 @@ select sum(deaths) as total
 select date, sum(cases) as total
     from timeseries
     group by date
-    order by total desc
+    order by date
 ```
 
 <LineChart data={data.cases_by_date} x=date y=total/>
@@ -62,7 +62,7 @@ select date, sum(cases) as total
 select date, sum(deaths) as total
     from timeseries
     group by date
-    order by total desc
+    order by date
 ```
 
 <LineChart data={data.deaths_by_date} x=date y=total/>
@@ -73,7 +73,7 @@ select date, sum(deaths) as total
 select date, sum(active) as total
     from timeseries
     group by date
-    order by total desc
+    order by date
 ```
 
 <AreaChart data={data.active_by_date} x=date y=total/>
@@ -85,7 +85,7 @@ select date,
 case when sum(deaths) > 0 then sum(deaths)::decimal/sum(cases)::decimal else 0 end as rate_pct
     from timeseries
     group by date
-    order by rate_pct desc
+    order by date
 ```
 
 <LineChart data={data.death_rate_by_date} x=date y=rate_pct fmt=pct/>
@@ -93,10 +93,11 @@ case when sum(deaths) > 0 then sum(deaths)::decimal/sum(cases)::decimal else 0 e
 ## Cases by province
 
 ```by_province
-select province, sum(cases) as cases, sum(deaths) as deaths,
-    concat('1 in ', (case when sum(deaths) > 0 then sum(cases)/sum(deaths) else 0 end)::varchar, ' cases') as death_rate
-    from timeseries
-    group by province
+select provinces.name as province, sum(cases) as cases, sum(deaths) as deaths,
+    case when sum(deaths) > 0 then concat('1 in ', (sum(cases)/sum(deaths))::varchar, ' cases') else '--' end as case_death_rate,
+    case when sum(deaths) > 0 then concat('1 in ', to_char(provinces.population/sum(deaths), 'fm999G999'), ' people') else '--' end as death_per_capita
+    from timeseries inner join provinces on timeseries.province = provinces.code
+    group by provinces.name, provinces.population
     order by cases desc
 ```
 
